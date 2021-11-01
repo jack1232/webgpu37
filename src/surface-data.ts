@@ -94,7 +94,7 @@ export const SimpleSurfaceData = (f:any, xmin:number, xmax:number, zmin:number, 
     const cmax = NormalizePoint(vec3.fromValues(0, ymax1, 0), xmin, xmax, ymin, ymax, zmin, zmax, scale)[1];
 
     let p0:vec3, p1:vec3, p2:vec3, p3:vec3;
-    let vertex = [] as any, normal = [] as any, color = [] as any;   
+    let vertex = [] as any, normal = [] as any, color = [] as any;
     let uv = [] as any;    
     for(let i = 0; i < nx - 1; i++){
         for(let j = 0; j < nz - 1; j++){
@@ -102,13 +102,13 @@ export const SimpleSurfaceData = (f:any, xmin:number, xmax:number, zmin:number, 
             p1 = pts[i][j+1];
             p2 = pts[i+1][j+1];
             p3 = pts[i+1][j];
-            let data = CreateQuad(p0, p1, p2, p3, cmin, cmax, colormapName, scale, ul, vl);                            
+            let data = CreateQuad(p0, p1, p2, p3, cmin, cmax, colormapName, scale, ul, vl);
             vertex.push(data.vertex.flat());
             normal.push(data.normal.flat());
             color.push(data.color.flat());
             uv.push(data.uv.flat());
         }
-    }        
+    }  
 
     return{
         vertexData: new Float32Array(vertex.flat()),
